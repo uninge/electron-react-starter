@@ -1,0 +1,18 @@
+{
+	"name": "electron-react-starter",
+	"version": "1.0.0",
+	"author": "",
+	"description": "",
+	"scripts": {
+		"prettier": "prettier . --write",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"devDependencies": {
+		"husky": "^8.0.3",
+		"lint-staged": "^15.2.0",
+		"prettier": "^3.1.1",
+		"prettier-quick": "^0.0.5"
+	},
+	"keywords": [],
+	"license": "ISC"
+}
