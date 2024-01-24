@@ -439,5 +439,23 @@
     //   "reviewCategory": "tools",
     //   "tags": [ "tools" ]
     // }
+     {
+       "packageName": "app-main",
+       "projectFolder": "packages/app-main",
+       "reviewCategory": "production",
+       "tags": []
+     },
+    {
+      "packageName": "app-web",
+      "projectFolder": "packages/app-web",
+      "reviewCategory": "production",
+      "tags": []
+    },
+    {
+      "packageName": "service",
+      "projectFolder": "packages/service",
+      "reviewCategory": "production",
+      "tags": []
+    }
   ]
 }

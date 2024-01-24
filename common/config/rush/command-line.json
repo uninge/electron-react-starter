@@ -175,6 +175,22 @@
     //    */
     //   // "autoinstallerName": "my-task"
     // }
+    {
+      "name": "prettier",
+      "commandKind": "global",
+      "summary": "Used by the pre-commit Git hook. This command invokes Prettier to reformat staged changes.",
+      "safeForSimultaneousRushProcesses": true,
+      "autoinstallerName": "rush-prettier",
+      "shellCommand": "pretty-quick --staged"
+    },
+    {
+      "name": "lint",
+      "commandKind": "global",
+      "summary": "Used by the pre-commit Git hook. This command invokes Eslint to check staged changes.",
+      "safeForSimultaneousRushProcesses": true,
+      "autoinstallerName": "rush-lint",
+      "shellCommand": "eslint --ext .ts,.tsx src"
+    }
   ],
 
   /**
