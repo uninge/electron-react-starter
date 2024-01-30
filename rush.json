@@ -439,23 +439,38 @@
     //   "reviewCategory": "tools",
     //   "tags": [ "tools" ]
     // }
-     {
-       "packageName": "app-main",
-       "projectFolder": "packages/app-main",
-       "reviewCategory": "production",
-       "tags": []
-     },
     {
-      "packageName": "app-web",
-      "projectFolder": "packages/app-web",
+      "packageName": "@bifrost/cli",
+      "projectFolder": "toolchains/cli",
       "reviewCategory": "production",
-      "tags": []
+      "tags": [],
+      "shouldPublish": false,
+      "versionPolicyName": "private"
+    },
+
+    {
+      "packageName": "@bifrost/app-main",
+      "projectFolder": "packages/app-main",
+      "reviewCategory": "production",
+      "tags": [],
+      "shouldPublish": false,
+      "versionPolicyName": "private"
     },
     {
-      "packageName": "service",
+      "packageName": "@bifrost/app-web",
+      "projectFolder": "packages/app-web",
+      "reviewCategory": "production",
+      "tags": [],
+      "shouldPublish": false,
+      "versionPolicyName": "private"
+    },
+    {
+      "packageName": "@bifrost/service",
       "projectFolder": "packages/service",
       "reviewCategory": "production",
-      "tags": []
+      "tags": [],
+      "shouldPublish": false,
+      "versionPolicyName": "private"
     }
   ]
 }
