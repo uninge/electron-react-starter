@@ -73,3 +73,9 @@ common/autoinstallers/*/.npmrc
 # Heft temporary files
 .cache
 .heft
+
+# build resource
+**/lib
+**/dist
+**/build
+**/release

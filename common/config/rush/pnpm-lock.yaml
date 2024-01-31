@@ -1,0 +1,39 @@
+lockfileVersion: 5.4
+
+importers:
+
+  .:
+    specifiers: {}
+
+  ../../packages/app-main:
+    specifiers:
+      '@bifrost/deveco': workspace:*
+    devDependencies:
+      '@bifrost/deveco': link:../../toolchains/deveco
+
+  ../../packages/app-web:
+    specifiers: {}
+
+  ../../packages/service:
+    specifiers: {}
+
+  ../../toolchains/deveco:
+    specifiers:
+      commander: ~11.1.0
+      typescript: ~5.3.3
+    devDependencies:
+      commander: 11.1.0
+      typescript: 5.3.3
+
+packages:
+
+  /commander/11.1.0:
+    resolution: {integrity: sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==}
+    engines: {node: '>=16'}
+    dev: true
+
+  /typescript/5.3.3:
+    resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    dev: true
