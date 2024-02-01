@@ -1,6 +1,7 @@
 {
   "name": "@bifrost/deveco",
   "version": "0.0.1",
+  "author": "",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -10,11 +11,25 @@
     "tsc": "tsc --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "dependencies": {
+    "webpack": "~5.90.0",
+    "webpackbar": "~6.0.0",
+    "copy-webpack-plugin": "~12.0.2",
+    "eslint-webpack-plugin": "~4.0.1",
+    "webpack-bundle-analyzer": "~4.10.1",
+    "fork-ts-checker-webpack-plugin": "~9.0.2",
+    "eslint": "~8.56.0",
+    "babel-loader": "~9.1.3",
+    "@babel/core": "~7.23.9",
+    "ts-loader": "~9.5.1",
+    "@babel/preset-typescript": "~7.23.3"
+  },
   "devDependencies": {
     "typescript": "~5.3.3",
-    "commander": "~11.1.0"
-  }
+    "commander": "~11.1.0",
+    "@types/node": "~20.11.15",
+    "@types/webpack-bundle-analyzer": "~4.6.3"
+  },
+  "keywords": [],
+  "license": "ISC"
 }
