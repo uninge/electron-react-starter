@@ -31,7 +31,7 @@ function createWindow() {
     frame: true,
     show: true,
     transparent: false,
-    backgroundColor: '#333',
+    backgroundColor: '#f7f7f7',
     titleBarStyle: 'hidden',
     webPreferences: {
       webviewTag: true,
