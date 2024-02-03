@@ -16,9 +16,13 @@ program
     process.env.BABEL_ENV = 'development';
 
     if (platform === 'electron') {
-      devElectron();
+      import('./electron/dev').then((module) => {
+        module.default();
+      });
     } else if (platform === 'web') {
-      devWeb();
+      import('./web/dev').then((module) => {
+        module.default();
+      });
     } else {
       console.log(platform, options);
     }

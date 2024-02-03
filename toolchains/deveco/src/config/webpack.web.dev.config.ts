@@ -1,85 +1,30 @@
-import path from 'node:path';
-import { Configuration, DefinePlugin } from 'webpack';
-import WebpackBar from 'webpackbar';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
-import ESLintWebpackPlugin from 'eslint-webpack-plugin';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import { Configuration } from 'webpack';
+import { merge } from 'webpack-merge';
+import webpackWebBaseConfig from './webpack.web.base.config';
 
-const webpackWebBaseConfig: Configuration = {
-  bail: true,
-  cache: true,
-  devtool: 'source-map',
-  mode: 'production',
-  module: {
-    strictExportPresence: true,
-    rules: [
-      {
-        test: /\.(js|jsx|ts|tsx)$/,
-        include: path.resolve(process.cwd(), './src'),
-        use: [
-          {
-            loader: require.resolve('babel-loader'),
-            options: {
-              cacheDirectory: false,
-              presets: [
-                '@babel/preset-typescript', // https://babeljs.io/docs/en/babel-preset-typescript
-              ],
-              plugins: [],
-            },
-          },
-        ],
-      },
-    ],
+const config: Configuration = {
+  mode: 'development',
+  devtool: 'eval-cheap-module-source-map',
+  output: {
+    publicPath: '/',
+    filename: '[name]-[fullhash:8].js',
   },
   resolve: {
-    symlinks: true,
-    extensions: ['.js', '.ts', '.json', '.node'],
     alias: {},
   },
   plugins: [
-    new WebpackBar({
-      name: 'Electron Main',
-      profile: true,
-    }),
-    new DefinePlugin({
-      'process.env.ASDF': JSON.stringify(8),
-    }),
-    // new BundleAnalyzerPlugin({
-    //   analyzerMode: 'server',
-    //   openAnalyzer: true,
-    //   analyzerPort: 'auto',
-    //   reportTitle: `Main Process`,
+    // new webpack.HotModuleReplacementPlugin(),
+    // new ReactRefreshWebpackPlugin({
+    // 	overlay: false,
     // }),
-    new ForkTsCheckerWebpackPlugin(),
-    new ESLintWebpackPlugin({
-      cache: true,
-      extensions: ['js', 'jsx', 'ts', 'tsx'],
-    }),
-    // new CleanWebpackPlugin({
-    // 	// verbose: true,
-    // }),
-    // new CopyWebpackPlugin({
-    //   patterns: [
-    //     {
-    //       from: paths.appElectronPublicAssetsPath,
-    //       to: paths.appElectronDistPublicPath,
-    //       globOptions: {
-    //         ignore: ['**/favicon.ico', '**/index.html'],
-    //       },
-    //       noErrorOnMissing: false,
-    //     },
-    //   ],
-    // }),
+    //
   ],
   optimization: {
-    usedExports: true,
-    minimize: true,
-  },
-  node: {
-    __dirname: true,
-    __filename: true,
+    moduleIds: 'named',
+    emitOnErrors: false,
   },
 };
 
-export default webpackWebBaseConfig;
+const webpackDevConfig = merge(webpackWebBaseConfig, config);
+
+export default webpackDevConfig;

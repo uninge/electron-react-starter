@@ -3,14 +3,14 @@ import { ip } from 'address';
 // import open from "open";
 import { getPortPromise } from 'portfinder';
 import WebpackDevServer from 'webpack-dev-server';
-import webpackBaseConfig from '../config/webpack.web.base.config';
+import webpackDevConfig from '../config/webpack.web.dev.config';
 import { printInstructions } from '../utils';
 
 export default async function devWeb() {
   const port = await getPortPromise({
     port: 3000,
   });
-  const compiler = webpack(webpackBaseConfig);
+  const compiler = webpack(webpackDevConfig);
   const server = new WebpackDevServer(
     {
       port,
