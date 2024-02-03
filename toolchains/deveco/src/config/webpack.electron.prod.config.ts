@@ -13,10 +13,15 @@ interface IConfiguration extends Configuration {
   };
 }
 
-const webpackProdConfig: IConfiguration = {
-  cache: false,
+const webpackElectronProdConfig: IConfiguration = {
+  cache: {
+    type: 'filesystem',
+    buildDependencies: {
+      config: [__filename],
+    },
+  },
   devtool: 'source-map',
-  mode: 'development',
+  mode: 'production',
   target: 'electron-main',
   entry: {
     index: [path.resolve(process.cwd(), './src/index.ts')],
@@ -61,7 +66,7 @@ const webpackProdConfig: IConfiguration = {
       profile: true,
     }),
     new DefinePlugin({
-      'process.env.ASDF': JSON.stringify(8),
+      // 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
     // new BundleAnalyzerPlugin({
     //   analyzerMode: 'server',
@@ -96,4 +101,4 @@ const webpackProdConfig: IConfiguration = {
   },
 };
 
-export default webpackProdConfig;
+export default webpackElectronProdConfig;

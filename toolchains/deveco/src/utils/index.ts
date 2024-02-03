@@ -48,3 +48,18 @@ export function printElectronLog(data: any, color: 'cyan' | 'red') {
     );
   }
 }
+
+export function printInstructions(localUrl: string, networkUrl: string) {
+  console.log();
+  console.log(chalk.cyan(' Server running at:'));
+  console.log(` ${chalk.bold(`${chalk.green('✔')} Local:`)}   ${chalk.blue(localUrl)}`);
+  console.log(` ${chalk.bold(`${chalk.green('✔')} Network:`)} ${chalk.blue(networkUrl)}`);
+  console.log();
+  console.log('Note that the development build is not optimized.');
+  console.log(
+    `To create a production build, run ${chalk.cyan('npm run build')} for browser, run ${chalk.cyan(
+      'npm run package',
+    )} for electron.`,
+  );
+  console.log();
+}

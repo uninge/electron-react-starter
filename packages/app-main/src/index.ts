@@ -3,6 +3,7 @@ import url from 'node:url';
 import electronLog from 'electron-log';
 import { app, BrowserWindow, globalShortcut } from 'electron';
 import { performanceMark, performanceStart, performanceEnd, banShortcuts } from './utils';
+import process from 'node:process';
 
 performanceStart();
 performanceMark('main-start');
@@ -36,7 +37,10 @@ function createWindow() {
       webSecurity: false,
       nodeIntegration: true, // 加载第三方网页强烈建议置为false。
       contextIsolation: true, // 自Electron 12将默认为true。
-      // preload: path.resolve(__dirname, '.preload.js'),
+      preload: path.resolve(
+        __dirname,
+        process.env.NODE_ENV === 'development' ? '../dist/preload.js' : './preload.js',
+      ),
     },
   });
 
@@ -47,7 +51,7 @@ function createWindow() {
 
   const options = {
     protocol: 'http',
-    pathname: 'baidu.com',
+    pathname: '127.0.0.1:3000',
     slashes: true,
   };
 

@@ -2,7 +2,7 @@ import path from 'node:path';
 import chalk from 'chalk';
 import { rimraf } from 'rimraf';
 
-import webpackProdConfig from '../config/webpack.prod.config';
+import webpackElectronProdConfig from '../config/webpack.electron.prod.config';
 import { webpackBuilder } from '../utils';
 
 export default function buildElectron() {
@@ -10,7 +10,7 @@ export default function buildElectron() {
     if (!success) {
       throw new Error('rimraf fail');
     }
-    Promise.all([webpackBuilder(webpackProdConfig)])
+    Promise.all([webpackBuilder(webpackElectronProdConfig)])
       .then((res) => {
         console.log(chalk.green('------------------∽-★-∽--- 构建日志输出开始 ---∽-★-∽------------------'));
         res.forEach((item, index) => {

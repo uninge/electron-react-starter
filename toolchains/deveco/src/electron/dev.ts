@@ -3,18 +3,17 @@ import webpack from 'webpack';
 import path from 'node:path';
 import process from 'node:process';
 import { spawn, ChildProcessWithoutNullStreams } from 'node:child_process';
-
-import webpackMainProdConfig from '../config/webpack.prod.config';
+import webpackElectronProdConfig from '../config/webpack.electron.prod.config';
 import { printElectronLog } from '../utils';
-
 let firstTapDone = false;
 let isElectronManualRestarting = false;
 let electronProcess: ChildProcessWithoutNullStreams;
 
 function watchBuildMain() {
-  webpackMainProdConfig.entry.index.unshift(path.resolve(process.cwd(), './src/index.dev.ts'));
+  webpackElectronProdConfig.mode = 'development';
+  webpackElectronProdConfig.entry.index.unshift(path.resolve(process.cwd(), './src/index.dev.ts'));
 
-  const compiler = webpack(webpackMainProdConfig);
+  const compiler = webpack(webpackElectronProdConfig);
 
   return new Promise((resolve, reject) => {
     compiler.hooks.watchRun.tapAsync('watch-run', (_compilation, done) => {
