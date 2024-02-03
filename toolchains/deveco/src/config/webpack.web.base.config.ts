@@ -1,5 +1,5 @@
 import path from 'node:path';
-import webpack, { Configuration } from 'webpack';
+import webpack, { Configuration, LoaderContext } from 'webpack';
 import WebpackBar from 'webpackbar';
 import ESLintWebpackPlugin from 'eslint-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
@@ -10,6 +10,11 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 const isProduction = process.env.NODE_ENV === 'production';
+
+function getCSSModuleLocalIdent(context: LoaderContext<any>, _localIdentName: string, localName: string) {
+  const resourcePath = context.resourcePath.replace(/\\/g, '/');
+  return `${resourcePath.split('/').slice(-5, -1).join('_')}__${localName}`;
+}
 
 const webpackBaseConfig: Configuration = {
   cache: {
@@ -95,7 +100,9 @@ const webpackBaseConfig: Configuration = {
           {
             loader: require.resolve('css-loader'),
             options: {
-              modules: true,
+              modules: {
+                getLocalIdent: getCSSModuleLocalIdent,
+              },
             },
           },
           {
