@@ -1,10 +1,3 @@
-process.env.NODE_ENV = 'development';
-process.env.BABEL_ENV = 'development';
-
-process.on('unhandledRejection', (error) => {
-  throw error;
-});
-
 import webpack from 'webpack';
 import { ip } from 'address';
 // import open from "open";

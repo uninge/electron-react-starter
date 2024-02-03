@@ -12,6 +12,9 @@ program
   .argument('<platform>', '')
   .option('--watch', '')
   .action((platform, options) => {
+    process.env.NODE_ENV = 'development';
+    process.env.BABEL_ENV = 'development';
+
     if (platform === 'electron') {
       devElectron();
     } else if (platform === 'web') {
@@ -26,6 +29,9 @@ program
   .description('')
   .argument('<platform>', '')
   .action((str, options) => {
+    process.env.NODE_ENV = 'production';
+    process.env.BABEL_ENV = 'production';
+
     console.log(str, options);
     buildElectron();
   });

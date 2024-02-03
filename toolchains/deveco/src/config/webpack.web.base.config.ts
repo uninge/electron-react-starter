@@ -29,7 +29,7 @@ const webpackBaseConfig: Configuration = {
       // 注意，webpack、加载器和所有从你的配置中引用的模块都会被自动添加
     },
   },
-  mode: 'development',
+  mode: 'production',
   target: 'web',
   entry: {
     app: [path.resolve(process.cwd(), './src/index.tsx')],
@@ -100,9 +100,11 @@ const webpackBaseConfig: Configuration = {
           {
             loader: require.resolve('css-loader'),
             options: {
-              modules: {
-                getLocalIdent: getCSSModuleLocalIdent,
-              },
+              modules: isDevelopment
+                ? {
+                    getLocalIdent: getCSSModuleLocalIdent,
+                  }
+                : true,
             },
           },
           {
