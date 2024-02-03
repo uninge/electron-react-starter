@@ -3,6 +3,7 @@ const WARN = 1;
 
 module.exports = {
   root: true,
+  parser: '@typescript-eslint/parser',
   env: { browser: true, commonjs: true, es6: true, node: true },
   settings: {
     'import/ignore': ['node_modules'],
@@ -11,8 +12,6 @@ module.exports = {
   globals: { document: true, window: true, process: true },
   parserOptions: {
     sourceType: 'module',
-    project: './tsconfig.json',
-    tsconfigRootDir: __dirname,
     ecmaVersion: 2018,
     ecmaFeatures: {
       jsx: true,

@@ -1,19 +1,26 @@
 import path from 'node:path';
-import { Configuration } from 'webpack';
+import { Configuration, DefinePlugin } from 'webpack';
 import WebpackBar from 'webpackbar';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ESLintWebpackPlugin from 'eslint-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
-const webpackProdConfig: Configuration = {
+interface IConfiguration extends Configuration {
+  entry: {
+    index: string[];
+    preload: string[];
+  };
+}
+
+const webpackProdConfig: IConfiguration = {
   cache: false,
   devtool: 'source-map',
   mode: 'development',
   target: 'electron-main',
   entry: {
-    index: path.resolve(process.cwd(), './src/index.ts'),
-    preload: path.resolve(process.cwd(), './src/preload.ts'),
+    index: [path.resolve(process.cwd(), './src/index.ts')],
+    preload: [path.resolve(process.cwd(), './src/preload.ts')],
   },
   output: {
     path: path.resolve(process.cwd(), './dist'),
@@ -27,27 +34,38 @@ const webpackProdConfig: Configuration = {
     strictExportPresence: true,
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.(js|ts)$/,
         include: path.resolve(process.cwd(), './src'),
         use: [
           {
             loader: require.resolve('babel-loader'),
             options: {
               cacheDirectory: false,
+              presets: [
+                '@babel/preset-typescript', // https://babeljs.io/docs/en/babel-preset-typescript
+              ],
+              plugins: [],
             },
           },
         ],
       },
     ],
   },
+  resolve: {
+    extensions: ['.js', '.ts', '.json', '.node'],
+    alias: {},
+  },
   plugins: [
     new WebpackBar({
       name: 'Electron Main',
       profile: true,
     }),
+    new DefinePlugin({
+      'process.env.ASDF': JSON.stringify(8),
+    }),
     // new BundleAnalyzerPlugin({
-    //   analyzerMode: process.env.ANALYZE === 'true' ? 'server' : 'disabled',
-    //   openAnalyzer: false,
+    //   analyzerMode: 'server',
+    //   openAnalyzer: true,
     //   analyzerPort: 'auto',
     //   reportTitle: `Main Process`,
     // }),
@@ -73,8 +91,8 @@ const webpackProdConfig: Configuration = {
     // }),
   ],
   node: {
-    __dirname: false,
-    __filename: false,
+    __dirname: true,
+    __filename: true,
   },
 };
 
