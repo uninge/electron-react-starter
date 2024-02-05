@@ -1,5 +1,6 @@
 import path from 'node:path';
 import webpack, { Configuration, LoaderContext } from 'webpack';
+import { merge } from 'webpack-merge';
 import WebpackBar from 'webpackbar';
 import ESLintWebpackPlugin from 'eslint-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
@@ -7,6 +8,8 @@ import StylelintPlugin from 'stylelint-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+
+import webpackBaseConfig from './webpack.base.config';
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 const isProduction = process.env.NODE_ENV === 'production';
@@ -16,19 +19,7 @@ function getCSSModuleLocalIdent(context: LoaderContext<any>, _localIdentName: st
   return `${resourcePath.split('/').slice(-5, -1).join('_')}__${localName}`;
 }
 
-const webpackBaseConfig: Configuration = {
-  cache: {
-    // 1. 将缓存类型设置为文件系统
-    type: 'filesystem',
-
-    buildDependencies: {
-      // 2. 将你的 config 添加为 buildDependency，以便在改变 config 时获得缓存无效
-      config: [__filename],
-
-      // 3. 如果你有其他的东西被构建依赖，你可以在这里添加它们
-      // 注意，webpack、加载器和所有从你的配置中引用的模块都会被自动添加
-    },
-  },
+const config: Configuration = {
   mode: 'production',
   target: 'web',
   entry: {
@@ -43,7 +34,6 @@ const webpackBaseConfig: Configuration = {
     chunkFilename: 'statics/scripts/[name]-[chunkhash:8].chunk.js',
   },
   module: {
-    strictExportPresence: true,
     rules: [
       {
         test: /\.(js|jsx|ts|tsx)$/,
@@ -149,39 +139,21 @@ const webpackBaseConfig: Configuration = {
     ],
   },
   resolve: {
-    symlinks: true,
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
       '@': path.resolve(process.cwd(), './src'),
     },
   },
   plugins: [
-    new WebpackBar({
-      name: 'Electron Render',
-      profile: true,
-    }),
-    new webpack.DefinePlugin({}),
-    // new BundleAnalyzerPlugin({
-    //   analyzerMode: 'server',
-    //   openAnalyzer: true,
-    //   analyzerPort: 'auto',
-    //   reportTitle: `Main Process`,
-    // }),
-    new ForkTsCheckerWebpackPlugin(),
-    new ESLintWebpackPlugin({
-      cache: false,
-      extensions: ['js', 'jsx', 'ts', 'tsx'],
-    }),
     new StylelintPlugin({
       fix: true,
-      cache: false,
-      context: path.resolve(process.cwd(), './src'),
+      cache: true,
       files: ['**/*.(le|c)ss'],
       extensions: ['css', 'less'],
     }),
     new HtmlWebpackPlugin({
       inject: true,
       publicPath: '/',
+      favicon: path.resolve(process.cwd(), './public/favicon.ico'),
       template: path.resolve(process.cwd(), './public/index.html'),
       meta: {
         name: 'name',
@@ -195,4 +167,6 @@ const webpackBaseConfig: Configuration = {
   },
 };
 
-export default webpackBaseConfig;
+const webpackWebBaseConfig = merge(webpackBaseConfig, config);
+
+export default webpackWebBaseConfig;

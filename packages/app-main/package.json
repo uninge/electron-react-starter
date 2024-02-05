@@ -1,11 +1,10 @@
 {
-  "name": "@bifrost/app-main",
+  "name": "@pitaya/app-main",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "e": "electron",
-    "dev": "deveco dev electron --watch",
+    "dev": "deveco dev electron",
     "build": "deveco build electron",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,13 +13,13 @@
   "license": "ISC",
   "dependencies": {
     "electron": "~28.2.1",
-    "electron-log": "~5.1.1",
-    "@bifrost/app-web": "workspace:*"
+    "electron-log": "~5.1.1"
   },
   "devDependencies": {
-    "@bifrost/deveco": "workspace:*",
     "@types/node": "~20.11.16",
     "electron-debug": "~3.2.0",
-    "electron-devtools-installer": "~3.2.0"
+    "electron-devtools-installer": "~3.2.0",
+    "@pitaya/deveco": "workspace:*",
+    "@pitaya/app-web": "workspace:*"
   }
 }

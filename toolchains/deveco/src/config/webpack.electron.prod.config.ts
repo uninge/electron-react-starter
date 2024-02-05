@@ -1,10 +1,12 @@
 import path from 'node:path';
 import { Configuration, DefinePlugin } from 'webpack';
+import { merge } from 'webpack-merge';
 import WebpackBar from 'webpackbar';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ESLintWebpackPlugin from 'eslint-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import webpackBaseConfig from './webpack.base.config';
 
 interface IConfiguration extends Configuration {
   entry: {
@@ -13,13 +15,7 @@ interface IConfiguration extends Configuration {
   };
 }
 
-const webpackElectronProdConfig: IConfiguration = {
-  cache: {
-    type: 'filesystem',
-    buildDependencies: {
-      config: [__filename],
-    },
-  },
+const config: Configuration = {
   devtool: 'source-map',
   mode: 'production',
   target: 'electron-main',
@@ -36,7 +32,6 @@ const webpackElectronProdConfig: IConfiguration = {
   },
   // externals: isDevelopment ? [] : [...Object.keys(dependencies || {}), ...Object.keys(devDependencies || {})],
   module: {
-    strictExportPresence: true,
     rules: [
       {
         test: /\.(js|ts)$/,
@@ -56,32 +51,8 @@ const webpackElectronProdConfig: IConfiguration = {
       },
     ],
   },
-  resolve: {
-    extensions: ['.js', '.ts', '.json', '.node'],
-    alias: {},
-  },
+
   plugins: [
-    new WebpackBar({
-      name: 'Electron Main',
-      profile: true,
-    }),
-    new DefinePlugin({
-      // 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-    }),
-    // new BundleAnalyzerPlugin({
-    //   analyzerMode: 'server',
-    //   openAnalyzer: true,
-    //   analyzerPort: 'auto',
-    //   reportTitle: `Main Process`,
-    // }),
-    new ForkTsCheckerWebpackPlugin(),
-    new ESLintWebpackPlugin({
-      cache: false,
-      extensions: ['ts'],
-    }),
-    // new CleanWebpackPlugin({
-    // 	// verbose: true,
-    // }),
     // new CopyWebpackPlugin({
     //   patterns: [
     //     {
@@ -95,10 +66,8 @@ const webpackElectronProdConfig: IConfiguration = {
     //   ],
     // }),
   ],
-  node: {
-    __dirname: true,
-    __filename: true,
-  },
 };
+
+const webpackElectronProdConfig = merge(webpackBaseConfig, config) as IConfiguration;
 
 export default webpackElectronProdConfig;

@@ -434,7 +434,7 @@
     //   "tags": [ "tools" ]
     // }
     {
-      "packageName": "@bifrost/deveco",
+      "packageName": "@pitaya/deveco",
       "projectFolder": "toolchains/deveco",
       "reviewCategory": "production",
       "tags": [],
@@ -443,7 +443,7 @@
     },
 
     {
-      "packageName": "@bifrost/app-main",
+      "packageName": "@pitaya/app-main",
       "projectFolder": "packages/app-main",
       "reviewCategory": "production",
       "tags": [],
@@ -451,7 +451,7 @@
       "versionPolicyName": "private"
     },
     {
-      "packageName": "@bifrost/app-web",
+      "packageName": "@pitaya/app-web",
       "projectFolder": "packages/app-web",
       "reviewCategory": "production",
       "tags": [],
@@ -459,8 +459,8 @@
       "versionPolicyName": "private"
     },
     {
-      "packageName": "@bifrost/service",
-      "projectFolder": "packages/service",
+      "packageName": "@pitaya/app-server",
+      "projectFolder": "packages/app-server",
       "reviewCategory": "production",
       "tags": [],
       "shouldPublish": false,

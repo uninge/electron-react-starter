@@ -1,5 +1,5 @@
 {
-  "name": "@bifrost/deveco",
+  "name": "@pitaya/deveco",
   "version": "0.0.1",
   "author": "",
   "description": "",
@@ -53,7 +53,8 @@
     "stylelint-config-recess-order": "~4.4.0",
     "stylelint-config-css-modules": "~4.4.0",
     "terser-webpack-plugin": "~5.3.10",
-    "css-minimizer-webpack-plugin": "~6.0.0"
+    "css-minimizer-webpack-plugin": "~6.0.0",
+    "clean-webpack-plugin": "~4.0.0"
   },
   "devDependencies": {
     "@types/node": "~20.11.15",

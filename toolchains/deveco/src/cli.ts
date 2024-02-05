@@ -10,7 +10,6 @@ program
   .command('dev')
   .description('')
   .argument('<platform>', '')
-  .option('--watch', '')
   .action((platform, options) => {
     process.env.NODE_ENV = 'development';
     process.env.BABEL_ENV = 'development';
@@ -24,7 +23,7 @@ program
         module.default();
       });
     } else {
-      console.log(platform, options);
+      console.log('--->>>dev', platform, options);
     }
   });
 
@@ -32,12 +31,21 @@ program
   .command('build')
   .description('')
   .argument('<platform>', '')
-  .action((str, options) => {
+  .action((platform, options) => {
     process.env.NODE_ENV = 'production';
     process.env.BABEL_ENV = 'production';
 
-    console.log(str, options);
-    buildElectron();
+    if (platform === 'electron') {
+      import('./electron/build').then((module) => {
+        module.default();
+      });
+    } else if (platform === 'web') {
+      import('./web/build').then((module) => {
+        module.default();
+      });
+    } else {
+      console.log('--->>>build', platform, options);
+    }
   });
 
 program.parse();

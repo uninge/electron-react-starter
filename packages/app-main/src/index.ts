@@ -105,7 +105,7 @@ app
   .whenReady()
   .then(() => {
     if (true) {
-      banShortcuts();
+      // banShortcuts();
     }
 
     createWindow();
