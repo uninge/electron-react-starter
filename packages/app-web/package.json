@@ -13,7 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "react": "~18.2.0",
-    "react-dom": "~18.2.0"
+    "react-dom": "~18.2.0",
+    "sanitize.css": "~13.0.0"
   },
   "devDependencies": {
     "@types/react-dom": "~18.2.18",

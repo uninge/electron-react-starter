@@ -8,6 +8,7 @@ import StylelintPlugin from 'stylelint-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import postcssNormalize from 'postcss-normalize';
 
 import webpackBaseConfig from './webpack.base.config';
 
@@ -54,6 +55,35 @@ const config: Configuration = {
         ],
       },
       {
+        test: /\.css$/,
+        use: [
+          isDevelopment ? require.resolve('style-loader') : MiniCssExtractPlugin.loader,
+          require.resolve('css-loader'),
+          {
+            loader: require.resolve('postcss-loader'),
+            options: {
+              postcssOptions: {
+                ident: 'postcss',
+                config: false,
+                plugins: [
+                  require.resolve('postcss-flexbugs-fixes'),
+                  [
+                    require.resolve('postcss-preset-env'),
+                    {
+                      autoprefixer: {
+                        flexbox: 'no-2009',
+                      },
+                      stage: 3,
+                    },
+                  ],
+                  postcssNormalize(),
+                ],
+              },
+            },
+          },
+        ],
+      },
+      {
         test: /\.less$/,
         exclude: /\.module\.less$/,
         use: [
@@ -76,7 +106,16 @@ const config: Configuration = {
                       stage: 3,
                     },
                   ],
+                  postcssNormalize(),
                 ],
+              },
+            },
+          },
+          {
+            loader: require.resolve('less-loader'),
+            options: {
+              lessOptions: {
+                javascriptEnabled: true,
               },
             },
           },
@@ -114,6 +153,7 @@ const config: Configuration = {
                       stage: 3,
                     },
                   ],
+                  postcssNormalize(),
                 ],
               },
             },

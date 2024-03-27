@@ -54,7 +54,8 @@
     "stylelint-config-css-modules": "~4.4.0",
     "terser-webpack-plugin": "~5.3.10",
     "css-minimizer-webpack-plugin": "~6.0.0",
-    "clean-webpack-plugin": "~4.0.0"
+    "clean-webpack-plugin": "~4.0.0",
+    "postcss-normalize": "~10.0.1"
   },
   "devDependencies": {
     "@types/node": "~20.11.15",

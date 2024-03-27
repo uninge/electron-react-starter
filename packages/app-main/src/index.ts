@@ -32,6 +32,7 @@ function createWindow() {
     show: true,
     transparent: false,
     backgroundColor: '#333',
+    titleBarStyle: 'hidden',
     webPreferences: {
       webviewTag: true,
       webSecurity: false,
@@ -58,7 +59,7 @@ function createWindow() {
   mainWindow
     .loadURL(url.format(options))
     .then(() => {
-      electronLog.info(`Main Window Load Success`);
+      electronLog.info('Main Window Load Success');
     })
     .catch((err) => {
       electronLog.error(err);
@@ -104,9 +105,9 @@ function createWindow() {
 app
   .whenReady()
   .then(() => {
-    if (true) {
-      // banShortcuts();
-    }
+    // if (true) {
+    //   // banShortcuts();
+    // }
 
     createWindow();
 

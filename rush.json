@@ -441,6 +441,14 @@
       "shouldPublish": false,
       "versionPolicyName": "private"
     },
+    {
+      "packageName": "eslint-config-jarvis",
+      "projectFolder": "toolchains/eslint-config",
+      "reviewCategory": "production",
+      "tags": [],
+      "shouldPublish": false,
+      "versionPolicyName": "private"
+    },
 
     {
       "packageName": "@pitaya/app-main",
