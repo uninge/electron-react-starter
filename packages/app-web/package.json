@@ -19,6 +19,7 @@
   "devDependencies": {
     "@types/react-dom": "~18.2.18",
     "@types/react": "~18.2.52",
-    "@pitaya/deveco": "workspace:*"
+    "@pitaya/deveco": "workspace:*",
+    "eslint-config-jarvis": "workspace:*"
   }
 }

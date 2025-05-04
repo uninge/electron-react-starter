@@ -14,6 +14,7 @@ importers:
       electron-debug: ~3.2.0
       electron-devtools-installer: ~3.2.0
       electron-log: ~5.1.1
+      eslint-config-jarvis: workspace:*
     dependencies:
       electron: 28.2.1
       electron-log: 5.1.1
@@ -23,6 +24,7 @@ importers:
       '@types/node': 20.11.16
       electron-debug: 3.2.0
       electron-devtools-installer: 3.2.0
+      eslint-config-jarvis: link:../../toolchains/eslint-config
 
   ../../packages/app-server:
     specifiers: {}
@@ -32,6 +34,7 @@ importers:
       '@pitaya/deveco': workspace:*
       '@types/react': ~18.2.52
       '@types/react-dom': ~18.2.18
+      eslint-config-jarvis: workspace:*
       react: ~18.2.0
       react-dom: ~18.2.0
       sanitize.css: ~13.0.0
@@ -43,6 +46,7 @@ importers:
       '@pitaya/deveco': link:../../toolchains/deveco
       '@types/react': 18.2.52
       '@types/react-dom': 18.2.18
+      eslint-config-jarvis: link:../../toolchains/eslint-config
 
   ../../toolchains/deveco:
     specifiers:

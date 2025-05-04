@@ -20,6 +20,7 @@
     "electron-debug": "~3.2.0",
     "electron-devtools-installer": "~3.2.0",
     "@pitaya/deveco": "workspace:*",
-    "@pitaya/app-web": "workspace:*"
+    "@pitaya/app-web": "workspace:*",
+    "eslint-config-jarvis": "workspace:*"
   }
 }

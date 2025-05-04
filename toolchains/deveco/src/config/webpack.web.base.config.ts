@@ -37,13 +37,12 @@ const config: Configuration = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx|ts|tsx)$/,
+        test: /\.(ts|tsx)$/,
         include: path.resolve(process.cwd(), './src'),
         use: [
           {
             loader: require.resolve('babel-loader'),
             options: {
-              cacheDirectory: false,
               presets: [
                 '@babel/preset-typescript', // https://babeljs.io/docs/en/babel-preset-typescript
                 '@babel/preset-react', // https://babeljs.io/docs/en/babel-preset-react
@@ -184,9 +183,15 @@ const config: Configuration = {
     },
   },
   plugins: [
+    new ESLintWebpackPlugin({
+      extensions: ['js', 'jsx', 'ts', 'tsx'],
+      cwd: process.cwd(),
+      resolvePluginsRelativeTo: __dirname,
+      eslintPath: require.resolve('eslint'),
+      formatter: require.resolve('react-dev-utils/eslintFormatter'),
+    }),
     new StylelintPlugin({
       fix: true,
-      cache: true,
       files: ['**/*.(le|c)ss'],
       extensions: ['css', 'less'],
     }),
