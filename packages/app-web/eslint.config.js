@@ -1,11 +1,29 @@
-// eslint.config.js
-import { defineConfig } from 'eslint/config';
+const { defineConfig } = require('eslint/config');
 
-export default defineConfig([
+const js = require('@eslint/js');
+
+const { FlatCompat } = require('@eslint/eslintrc');
+
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+  recommendedConfig: js.configs.recommended,
+  allConfig: js.configs.all,
+});
+
+module.exports = defineConfig([
   {
-    rules: {
-      semi: 'error',
-      'prefer-const': 'error',
+    files: ['src/**/*.tsx'],
+    extends: compat.extends('jarvis'),
+
+    languageOptions: {
+      globals: {},
+
+      parserOptions: {
+        project: './tsconfig.json',
+        tsconfigRootDir: __dirname,
+        projectFolderIgnoreList: ['.rush', 'dist', '**/node_modules/**'],
+      },
     },
+    rules: {},
   },
 ]);

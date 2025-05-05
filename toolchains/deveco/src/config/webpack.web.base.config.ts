@@ -140,7 +140,6 @@ const config: Configuration = {
       cwd: process.cwd(),
       eslintPath: require.resolve('eslint'),
       formatter: require.resolve('react-dev-utils/eslintFormatter'),
-      emitError: true,
     }),
     new StylelintPlugin({
       fix: true,

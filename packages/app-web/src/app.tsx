@@ -2,7 +2,7 @@ import React from 'react';
 import TitleBar from '@/components/TitleBar';
 
 export default function App() {
-  const a = '23456789';
+  const a = '1';
   return (
     <>
       <TitleBar />
