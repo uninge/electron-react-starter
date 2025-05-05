@@ -84,57 +84,9 @@ const config: Configuration = {
       },
       {
         test: /\.less$/,
-        exclude: /\.module\.less$/,
         use: [
           isDevelopment ? require.resolve('style-loader') : MiniCssExtractPlugin.loader,
           require.resolve('css-loader'),
-          {
-            loader: require.resolve('postcss-loader'),
-            options: {
-              postcssOptions: {
-                ident: 'postcss',
-                config: false,
-                plugins: [
-                  require.resolve('postcss-flexbugs-fixes'),
-                  [
-                    require.resolve('postcss-preset-env'),
-                    {
-                      autoprefixer: {
-                        flexbox: 'no-2009',
-                      },
-                      stage: 3,
-                    },
-                  ],
-                  postcssNormalize(),
-                ],
-              },
-            },
-          },
-          {
-            loader: require.resolve('less-loader'),
-            options: {
-              lessOptions: {
-                javascriptEnabled: true,
-              },
-            },
-          },
-        ],
-      },
-      {
-        test: /\.module\.less$/,
-        exclude: /node_modules/,
-        use: [
-          isDevelopment ? require.resolve('style-loader') : MiniCssExtractPlugin.loader,
-          {
-            loader: require.resolve('css-loader'),
-            options: {
-              modules: isDevelopment
-                ? {
-                    getLocalIdent: getCSSModuleLocalIdent,
-                  }
-                : true,
-            },
-          },
           {
             loader: require.resolve('postcss-loader'),
             options: {
@@ -183,18 +135,17 @@ const config: Configuration = {
     },
   },
   plugins: [
-    new ESLintWebpackPlugin({
-      extensions: ['js', 'jsx', 'ts', 'tsx'],
-      cwd: process.cwd(),
-      resolvePluginsRelativeTo: __dirname,
-      eslintPath: require.resolve('eslint'),
-      formatter: require.resolve('react-dev-utils/eslintFormatter'),
-    }),
-    new StylelintPlugin({
-      fix: true,
-      files: ['**/*.(le|c)ss'],
-      extensions: ['css', 'less'],
-    }),
+    // new ESLintWebpackPlugin({
+    //   extensions: ['js', 'jsx', 'ts', 'tsx'],
+    //   cwd: process.cwd(),
+    //   eslintPath: require.resolve('eslint'),
+    //   formatter: require.resolve('react-dev-utils/eslintFormatter'),
+    // }),
+    // new StylelintPlugin({
+    //   fix: true,
+    //   files: ['**/*.(le|c)ss'],
+    //   extensions: ['css', 'less'],
+    // }),
     new HtmlWebpackPlugin({
       inject: true,
       publicPath: '/',

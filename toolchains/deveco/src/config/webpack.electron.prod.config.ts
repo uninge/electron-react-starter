@@ -5,7 +5,6 @@ import WebpackBar from 'webpackbar';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ESLintWebpackPlugin from 'eslint-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import webpackBaseConfig from './webpack.base.config';
 
 interface IConfiguration extends Configuration {

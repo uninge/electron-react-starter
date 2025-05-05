@@ -1,8 +1,8 @@
 import React from 'react';
-import s from './index.module.less';
+import './index.less';
 
 const TitleBar: React.FC = () => {
-  return <div className={s['title-bar']} />;
+  return <div className="title-bar" />;
 };
 
 export default TitleBar;

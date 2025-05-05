@@ -2,7 +2,6 @@ import { Configuration, DefinePlugin } from 'webpack';
 import WebpackBar from 'webpackbar';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import ESLintWebpackPlugin from 'eslint-webpack-plugin';
 
 const webpackElectronProdConfig: Configuration = {
@@ -43,7 +42,6 @@ const webpackElectronProdConfig: Configuration = {
     //   analyzerPort: 'auto',
     //   reportTitle: `Main Process`,
     // }),
-    new ForkTsCheckerWebpackPlugin(),
     new ESLintWebpackPlugin({
       cache: true,
       extensions: ['js', 'jsx', 'ts', 'tsx'],

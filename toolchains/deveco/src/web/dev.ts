@@ -18,7 +18,6 @@ export default async function devWeb() {
       // open: true, // 默认为false，本项目不启用，下面需要定制逻辑
       // hot: true, // 默认为true，启用webpack.HotModuleReplacementPlugin()
       liveReload: false, // devServer.hot 配置项必须禁用
-      proxy: {},
       historyApiFallback: true,
       client: {
         overlay: {
