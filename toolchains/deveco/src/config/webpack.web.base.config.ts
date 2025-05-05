@@ -135,12 +135,13 @@ const config: Configuration = {
     },
   },
   plugins: [
-    // new ESLintWebpackPlugin({
-    //   extensions: ['js', 'jsx', 'ts', 'tsx'],
-    //   cwd: process.cwd(),
-    //   eslintPath: require.resolve('eslint'),
-    //   formatter: require.resolve('react-dev-utils/eslintFormatter'),
-    // }),
+    new ESLintWebpackPlugin({
+      extensions: ['js', 'jsx', 'ts', 'tsx'],
+      cwd: process.cwd(),
+      eslintPath: require.resolve('eslint'),
+      formatter: require.resolve('react-dev-utils/eslintFormatter'),
+      emitError: true,
+    }),
     new StylelintPlugin({
       fix: true,
       files: ['**/*.(le|c)ss'],

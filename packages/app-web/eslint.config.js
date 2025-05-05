@@ -1,3 +1,11 @@
-const { defineConfig } = require('eslint/config');
+// eslint.config.js
+import { defineConfig } from 'eslint/config';
 
-module.exports = defineConfig([]);
+export default defineConfig([
+  {
+    rules: {
+      semi: 'error',
+      'prefer-const': 'error',
+    },
+  },
+]);

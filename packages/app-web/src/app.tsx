@@ -1,16 +1,16 @@
 import React from 'react';
 import TitleBar from '@/components/TitleBar';
-import './index.less';
-import 'sanitize.css';
 
 export default function App() {
+  const a = '3456789';
   return (
-    <div className="app">
+    <>
       <TitleBar />
+      <div style={{ color: '#ff6700', background: '#333', fontSize: '20px' }}>{a}</div>
       <img src={''} />
       <video src=""></video>
       <webview className="webview" src="https://www.github.com/" />
       <webview className="webview" src="https://www.github.com/" />
-    </div>
+    </>
   );
 }
