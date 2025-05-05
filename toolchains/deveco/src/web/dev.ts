@@ -46,6 +46,6 @@ export default async function devWeb() {
 
     setTimeout(() => {
       printInstructions(localUrl, networkUrl);
-    }, 0);
+    }, 300);
   });
 }
