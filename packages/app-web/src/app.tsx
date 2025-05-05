@@ -7,8 +7,6 @@ export default function App() {
     <>
       <TitleBar />
       <div style={{ color: '#ff6700', background: '#333', fontSize: '20px' }}>{a}</div>
-      <img src={''} />
-      <video src=""></video>
       <webview className="webview" src="https://www.github.com/" />
       <webview className="webview" src="https://www.github.com/" />
     </>
