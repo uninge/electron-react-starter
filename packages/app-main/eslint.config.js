@@ -1,7 +1,5 @@
 const { defineConfig } = require('eslint/config');
-
 const js = require('@eslint/js');
-
 const { FlatCompat } = require('@eslint/eslintrc');
 
 const compat = new FlatCompat({
