@@ -141,11 +141,11 @@ const config: Configuration = {
     //   eslintPath: require.resolve('eslint'),
     //   formatter: require.resolve('react-dev-utils/eslintFormatter'),
     // }),
-    // new StylelintPlugin({
-    //   fix: true,
-    //   files: ['**/*.(le|c)ss'],
-    //   extensions: ['css', 'less'],
-    // }),
+    new StylelintPlugin({
+      fix: true,
+      files: ['**/*.(le|c)ss'],
+      extensions: ['css', 'less'],
+    }),
     new HtmlWebpackPlugin({
       inject: true,
       publicPath: '/',
