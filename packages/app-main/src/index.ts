@@ -46,7 +46,7 @@ function createWindow() {
   });
 
   const originUa = mainWindow.webContents.getUserAgent();
-  mainWindow.webContents.setUserAgent(`${originUa} ${'Bifrost'}/${'0.0.1'}`);
+  mainWindow.webContents.setUserAgent(`${originUa} ${'@pitaya/app'}@${'0.0.1'}`);
 
   performanceMark('main-window-source-load-start');
 
