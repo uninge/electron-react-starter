@@ -136,10 +136,11 @@ const config: Configuration = {
   },
   plugins: [
     new ESLintWebpackPlugin({
+      cache: false,
       extensions: ['js', 'jsx', 'ts', 'tsx'],
-      cwd: process.cwd(),
       eslintPath: require.resolve('eslint'),
       formatter: require.resolve('react-dev-utils/eslintFormatter'),
+      lintDirtyModulesOnly: true,
     }),
     new StylelintPlugin({
       fix: true,
