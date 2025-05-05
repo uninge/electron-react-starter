@@ -2,7 +2,7 @@ import path from 'node:path';
 import url from 'node:url';
 import electronLog from 'electron-log';
 import { app, BrowserWindow, globalShortcut } from 'electron';
-import { performanceMark, performanceStart, performanceEnd, banShortcuts } from './utils';
+import { performanceMark, performanceStart, performanceEnd } from './utils';
 import process from 'node:process';
 
 performanceStart();

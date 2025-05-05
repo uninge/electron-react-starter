@@ -8,7 +8,7 @@ module.exports = {
   env: { browser: true, commonjs: true, es6: true, node: true },
   settings: {
     'import/ignore': ['node_modules'],
-    node: { extensions: ['.ts'] },
+    node: { extensions: ['.ts', '.tsx'] },
   },
   globals: { document: true, window: true, process: true },
   parserOptions: {
