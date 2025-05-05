@@ -3,6 +3,6 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "eslint": "^8.55.0"
+    "eslint": "^9.26.0"
   }
 }
