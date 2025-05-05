@@ -23,7 +23,7 @@ export function performanceEnd(): void {
   }
 }
 
-export function performanceMark(name?: string): void {
+export function performanceMark(name: string): void {
   performance.mark(name);
 }
 

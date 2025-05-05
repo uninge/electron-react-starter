@@ -4,11 +4,7 @@
 import { app, ipcMain } from 'electron';
 import electronLog from 'electron-log';
 import electronDebug from 'electron-debug';
-import installExtension, {
-  REACT_DEVELOPER_TOOLS,
-  REDUX_DEVTOOLS,
-  MOBX_DEVTOOLS,
-} from 'electron-devtools-installer';
+import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
 import { performanceMark, performanceStart, performanceEnd } from './utils';
 
 performanceStart();
@@ -21,11 +17,7 @@ electronDebug({ showDevTools: true, devToolsMode: 'previous' });
   await app.whenReady();
 
   /** ************** extensions start *************** */
-  const results = await Promise.allSettled([
-    installExtension(REACT_DEVELOPER_TOOLS),
-    installExtension(REDUX_DEVTOOLS),
-    installExtension(MOBX_DEVTOOLS),
-  ]);
+  const results = await Promise.allSettled([installExtension(REACT_DEVELOPER_TOOLS)]);
 
   results.forEach((result) => {
     if (result.status === 'fulfilled') {
